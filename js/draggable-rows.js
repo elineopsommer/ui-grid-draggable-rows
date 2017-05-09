@@ -83,6 +83,7 @@
 
                 /*jshint validthis: true */
                 this.splice(to, 0, this.splice(from, 1)[0]);
+                return this;
             };
 
             this.prepareDraggableRow = function ($scope, $element) {
@@ -258,7 +259,7 @@
                          }*/
 
                         $scope.$apply(function () {
-                            move.apply(data(), [uiGridDraggableRowsCommon.fromIndex, uiGridDraggableRowsCommon.toIndex, grid]);
+                            grid.options.data = move.apply(data(), [uiGridDraggableRowsCommon.fromIndex, uiGridDraggableRowsCommon.toIndex, grid]);
                         });
 
                         grid.api.draggableRows.raise.rowDropped(uiGridDraggableRowsCommon, this);
