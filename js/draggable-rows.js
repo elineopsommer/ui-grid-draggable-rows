@@ -259,7 +259,10 @@
                          }*/
 
                         $scope.$apply(function () {
-                            move.apply(data(), [uiGridDraggableRowsCommon.fromIndex, uiGridDraggableRowsCommon.toIndex, grid]);
+                            var updatedData = move.apply(data(), [uiGridDraggableRowsCommon.fromIndex, uiGridDraggableRowsCommon.toIndex, grid]);
+                            if (!$scope.$parent.row.groupHeader) {
+                                grid.options.data = updatedData;
+                            }
                         });
 
                         grid.api.draggableRows.raise.rowDropped(uiGridDraggableRowsCommon, this);
