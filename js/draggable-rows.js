@@ -217,6 +217,10 @@
                         uiGridDraggableRowsCommon.toIndex = data()
                             .indexOf($scope.$parent.$parent.row.entity);
 
+						if(uiGridDraggableRowsCommon.toIndex === -1) {
+							return false;
+						}
+
                         uiGridDraggableRowsCommon.targetRow = this;
 
                         if ($scope.$parent.$parent.row.groupHeader) {
