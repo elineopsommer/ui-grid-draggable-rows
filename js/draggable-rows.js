@@ -217,10 +217,6 @@
                         uiGridDraggableRowsCommon.toIndex = data()
                             .indexOf($scope.$parent.$parent.row.entity);
 
-						if(uiGridDraggableRowsCommon.toIndex === -1) {
-							return false;
-						}
-
                         uiGridDraggableRowsCommon.targetRow = this;
 
                         if ($scope.$parent.$parent.row.groupHeader) {
@@ -261,6 +257,10 @@
                         /*else if (uiGridDraggableRowsCommon.fromIndex >= uiGridDraggableRowsCommon.toIndex && !$scope.$parent.$parent.row.groupHeader) {
                          uiGridDraggableRowsCommon.toIndex += 1;
                          }*/
+
+						if(uiGridDraggableRowsCommon.toIndex === -1) {
+							return false;
+						}
 
                         $scope.$apply(function () {
                             var updatedData = move.apply(data(), [uiGridDraggableRowsCommon.fromIndex, uiGridDraggableRowsCommon.toIndex, grid]);
